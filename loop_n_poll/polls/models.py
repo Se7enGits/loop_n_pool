@@ -14,6 +14,10 @@ class Question(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
+    class Meta:
+        verbose_name = 'вопрос'
+        verbose_name_plural = 'вопросы'
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -22,3 +26,7 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+    
+    class Meta:
+        verbose_name = 'вариант'
+        verbose_name_plural = 'варианты'
