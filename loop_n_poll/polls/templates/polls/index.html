@@ -1,8 +1,15 @@
 {% if latest_question_list %}
   <ul>
   {% for question in latest_question_list %}
+    {% comment %} 
+      Прямая ссылка в шаблоне потребует её изменения при изменении адреса
     <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
-  {% endfor %}
+      
+      Можно использовать тег {% url %} — добавляем атрибут "name" к path(),
+      в шаблоне пишем 'имя_приложения:name_функции' и меняем ссылки тольков urls.py
+    {% endcomment %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
   </ul>
 {% else %}
   <p>No polls are available.</p>

@@ -26,7 +26,7 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
-    
+
     class Meta:
         verbose_name = 'вариант'
         verbose_name_plural = 'варианты'
